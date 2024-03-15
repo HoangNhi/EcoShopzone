@@ -1,0 +1,164 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_MiddleTermExamLayoutSecond";
+}
+<main>
+    <div class="single-checkout">
+        <div class="container">
+            <div class="wrapper">
+                <div class="checkout flexwrap">
+                    <div class="item left styled">
+                        <h1>Shipping Address</h1>
+                        <form action="">
+                            <p>
+                                <label for="email">Email Address <span></span></label>
+                                <input type="email" name="email" id="email" autocomplete="off" required>
+                            </p>
+                            <p>
+                                <label for="fname">First Name <span></span></label>
+                                <input type="text" id="fname" required>
+                            </p>
+                            <p>
+                                <label for="lname">Last Name <span></span></label>
+                                <input type="text" id="lname" required>
+                            </p>
+                            <p>
+                                <label for="cname">Company Name</label>
+                                <input type="text" id="cname">
+                            </p>
+                            <p>
+                                <label for="address">Street Address <span></span></label>
+                                <input type="text" id="address" required>
+                            </p>
+                            <p>
+                                <label for="city">City <span></span></label>
+                                <input type="text" id="city" required>
+                            </p>
+                            <p>
+                                <label for="state">State/Province <span></span></label>
+                                <input type="text" id="state" required>
+                            </p>
+                            <p>
+                                <label for="postal">Zip/Postal Code <span></span></label>
+                                <input type="number" id="postal" required>
+                            </p>
+                            <p>
+
+                                <label for="country">Country</label>
+                                <select name="country" id="country">
+                                    <option value=""></option>
+                                    <option value="1">Afganistan</option>
+                                    <option value="2">Aland Island</option>
+                                    <option value="3">Albania</option>
+                                    <option value="4" selected="selected">
+                                        United States
+                                    </option>
+                                    <option value="5">Others</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="phone">Phone Number <span></span></label>
+                                <input type="number" id="phone" required>
+                            </p>
+                            <p>
+                                <label>Order Notes (optional)</label>
+                                <textarea cols="30" rows="10"></textarea>
+                            </p>
+                            <p class="checkset">
+                                <input type="checkbox" id="anaccount">
+                                <label for="anaccount">Create an account?</label>
+                            </p>
+                        </form>
+                        <div class="shipping-methods">
+                            <h2>Shipping Methods</h2>
+                            <p class="checkset">
+                                <input type="radio" checked>
+                                <label>$5.00 Flate Rate</label>
+                            </p>
+                        </div>
+                        <div class="primary-checkout">
+                            <button class="primary-button">Place Order</button>
+                        </div>
+                    </div>
+                    <div class="item right">
+                        <h2>Order Summary</h2>
+                        <div class="summary-order is_sticky">
+                            <div class="summary-totals">
+                                <ul>
+                                    <li>
+                                        <span>Subtotal</span>
+                                        <span>$2155.95</span>
+                                    </li>
+                                    <li>
+                                        <span>Discount</span>
+                                        <span>$100.00</span>
+                                    </li>
+                                    <li>
+                                        <span>Shipping: Flat</span>
+                                        <span>$10.00</span>
+                                    </li>
+                                    <li>
+                                        <span>Total</span>
+                                        <strong>$2065.95</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <ul class="products mini">
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="/images/assets/products/home2.jpg" alt="">
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Dimable Ceiling Light Modern</p>
+                                        <span class="price">
+                                            <span>$279.99</span>
+                                            <span>x 2</span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="/images/assets/products/home3.jpg" alt="">
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Modern Storage Cabinet with Door & 3 Drawers</p>
+                                        <span class="price">
+                                            <span>$129.99</span>
+                                            <span>x 1</span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="/images/assets/products/home4.jpg" alt="">
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Vonanda Velvet Sofa Couch</p>
+                                        <span class="price">
+                                            <span>$352.99</span>
+                                            <span>x 1</span>
+                                        </span>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="thumbnail object-cover">
+                                        <img src="/images/assets/products/home5.jpg" alt="">
+                                    </div>
+                                    <div class="item-content">
+                                        <p>Vonanda Velvet Sofa Couch</p>
+                                        <span class="price">
+                                            <span>$579.99</span>
+                                            <span>x 1</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

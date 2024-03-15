@@ -1,0 +1,92 @@
+﻿@using _1721031291_DaoHoangNhi.Models.Request;
+@using _1721031291_DaoHoangNhi.Models;
+@model ProductRequest;
+
+<div class="container">
+    <form method="post" class="d-flex flex-column w-75 mx-auto" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" value=@Model.Id>
+        <h3>Update - Product</h3>
+        <div class="d-flex mt-2">
+            <div style="width: 50%;">
+                <div class="form-group">
+                    <label>Hình ảnh sản phẩm: </label>
+                    <button class="border-0 border-bottom"
+                            onclick="UpdateImage(event)">
+                        Thay đổi hình ảnh
+                    </button>
+                    <input class="form-control upload mt-2" type="file" id="formFileMultiple" hidden multiple asp-for="Images">
+                </div>
+                <div>
+                    <div class="myTarget bg-info bg-opacity-10">
+                        <div style="">
+                            @foreach (ImageProduct img in ViewBag.Images)
+                            {
+                                <img src="@img.FilePath" width="150px" style="margin: 24px" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mx-4 w-50">
+                <div class="form-group">
+                    <label>Tên sản phẩm: </label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Giá</label>
+                    <input asp-for="Price" type="number" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Mô tả</label>
+                    <input asp-for="Description" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Thể loại</label>
+                    <select asp-for="TheLoaiId" asp-items="@ViewBag.DSTheLoai" class="form-control">
+                        <option disabled>Chọn thể loại</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Cập nhật</button>
+        <a asp-action="Index" class="btn btn-primary mt-2">Hủy</a>
+    </form>
+</div>
+
+<script>
+    var UpdateImage = (event) => {
+        event.preventDefault();
+        var InputImage = document.getElementsByClassName('upload')[0];
+        if (InputImage.hidden) {
+            InputImage.removeAttribute("hidden");
+        } else {
+            InputImage.setAttribute("hidden", "");
+        }
+    }
+    $(document).ready(function () {
+
+        $('input.upload').on('change', addFile);
+
+    });
+    function addFile(event) {
+        var jqDisplay = $('div.myTarget');
+        jqDisplay.empty();
+        Array.from(event.target.files).forEach(file => {
+            //BigInt64Array
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                var imageSrc = event.target.result;
+                var imgElement = document.createElement('img');
+                imgElement.src = imageSrc;
+                imgElement.alt = 'uploaded Image';
+                imgElement.style.width = '150px'
+                imgElement.classList.add('m-4')
+
+                jqDisplay.append(imgElement);
+            };
+            reader.readAsDataURL(file);
+        })
+    }
+</script>

@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using _1721031291_DaoHoangNhi.Models;
+@model TheLoaiViewModel;
+
+<div class="card text-center">
+    <div class="card-header">
+        Thể loại
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Tên thể loại</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.TheLoai)
+                {
+                    @if (item.IsDeleted == true)
+                    {
+                        continue;
+                    }
+                    <tr>
+                        <td width="20%">@item.Id</td>
+                        <td width="30%">@item.Name</td>
+                        <td width="30%">@String.Format("{0:dd/MM/yyyy}",item.DateCreated)</td>
+                        <td width="20%">
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>|
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>|
+                            <a asp-controller="TheLoai" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-controller="TheLoai" asp-action="Create" class="btn btn-primary">Thêm</a>
+    </div>
+</div>

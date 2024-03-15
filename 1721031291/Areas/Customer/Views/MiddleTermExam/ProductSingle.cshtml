@@ -1,0 +1,585 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_MiddleTermExamLayoutSecond";
+    Model.product.Images.Reverse();
+}
+@using _1721031291_DaoHoangNhi.Models;
+@model Cart;
+<main>
+    <div class="single-product">
+        <div class="container">
+            <div class="wrapper">
+                <div class="breadcrumb mt-8 mb-0">
+                    <ul class="flexitem">
+                        <li class="font-bold"><a href="/">Home</a></li>
+                        <li class="font-bold"><a href="/">@Model.product.TheLoaiViewModel.Name</a></li>
+                        <li>@Model.product.Name</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <div class="products one">
+                        <div class="flexwrap">
+                            <div class="row">
+                                <div class="item is_sticky">
+                                    <div class="big-image">
+                                        <div class="big-image-wrapper swiper-wrapper">
+                                            @foreach (ImageProduct img in Model.product.Images)
+                                            {
+                                                <div class="image-show swiper-slide">
+                                                    <a data-fslightbox href="@img.FilePath">
+                                                        @*<img src="/images/assets/products/shoe1.jpg" alt="">*@
+                                                        <img src="@img.FilePath" />
+                                                    </a>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="swiper-button-next"></div>
+                                        <div class="swiper-button-prev"></div>
+                                    </div>
+
+                                    <div thumbSlider="" class="small-image">
+                                        <ul class="small-image-wrapper flexitem swiper-wrapper">
+                                            @foreach (ImageProduct img in Model.product.Images)
+                                            {
+                                                <li class="thumbnail-show swiper-slide">
+                                                    <img src="@img.FilePath" alt="">
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="item" style="padding-top:2rem">
+                                    <h1>@Model.product.Name</h1>
+                                    <div class="content">
+                                        <div class="rating">
+                                            <div class="stars"></div>
+                                            <a href="#" class="mini-text">2,252 reviews</a>
+                                            <a href="#" class="add-review mini-text">Add Your Review</a>
+                                        </div>
+                                    </div>
+                                    <div class="stock-sku">
+                                        <span class="available">In Stock</span>
+                                        <span class="sku mini-text">SKU-881</span>
+                                    </div>
+                                    <div class="price">
+                                        <span class="current">$@Model.product.Price</span>
+                                        <span class="normal">$119.90</span>
+                                    </div>
+                                    <div class="colors">
+                                        <p>Color</p>
+                                        <div class="variant">
+                                            <form action="">
+                                                <p>
+                                                    <input type="radio" name="color" id="cogrey">
+                                                    <label for="cogrey" class="circle"></label>
+                                                </p>
+                                                <p>
+                                                    <input type="radio" name="color" id="coblue">
+                                                    <label for="coblue" class="circle"></label>
+                                                </p>
+                                                <p>
+                                                    <input type="radio" name="color" id="cogreen">
+                                                    <label for="cogreen" class="circle"></label>
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="sizes">
+                                        <p>Size</p>
+                                        <div class="variant">
+                                            <form action="">
+                                                <p>
+                                                    <input type="radio" name="size" id="size-40">
+                                                    <label for="size-40" class="circle"><span>40</span></label>
+                                                </p>
+                                                <p>
+                                                    <input type="radio" name="size" id="size-41">
+                                                    <label for="size-41" class="circle"><span>41</span></label>
+                                                </p>
+                                                <p>
+                                                    <input type="radio" name="size" id="size-42">
+                                                    <label for="size-42" class="circle"><span>42</span></label>
+                                                </p>
+                                                <p>
+                                                    <input type="radio" name="size" id="size-43">
+                                                    <label for="size-43" class="circle"><span>43</span></label>
+                                                </p>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="actions">
+                                        <div class="button-cart">
+                                            <form asp-action="ProductSingle" method="post">
+                                                <input asp-for="Id" value="@Model.Id" hidden />
+                                                <input asp-for="ProductId" value="@Model.ProductId" hidden />
+                                                <input asp-for="UserId" value="@Model.UserId" hidden />
+                                                <button class="primary-button bg-amber-500 text-black hover:text-white" type="submit">
+                                                    Add to
+                                                    cart
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="wish-share">
+                                            <ul class="flexitem second-links">
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="icon-large">
+                                                            <i class="ri-heart-line"></i>
+                                                        </span>
+                                                        <span>Wishlist</span>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="icon-large">
+                                                            <i class="ri-share-line"></i>
+                                                        </span>
+                                                        <span>Share</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="description my-collapse visible">
+                                        <ul>
+                                            <li class="has-child expand">
+                                                <a href="#0" class="icon-small">Information</a>
+                                                <ul class="content">
+                                                    <li><span>Brands</span> <span>Nike</span></li>
+                                                    <li><span>Activity</span> <span>Running</span></li>
+                                                    <li><span>Material</span> <span>Fleece</span></li>
+                                                    <li><span>Gender</span> Men</li>
+                                                </ul>
+                                            </li>
+                                            <li class="has-child">
+                                                <a href="#0" class="icon-small">Details</a>
+                                                <div class="content">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Itaque suscipit placeat sint natus. Est, et.
+                                                    </p>
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                        Temporibus est nulla dolores tempore, reprehenderit enim
+                                                        debitis atque eos iure, qui rerum esse excepturi
+                                                        provident eligendi?
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li class="has-child">
+                                                <a href="#0" class="icon-small">Custom</a>
+                                                <div class="content">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Size</th>
+                                                                <th>
+                                                                    Bust <span class="mini-text">(cm)</span>
+                                                                </th>
+                                                                <th>
+                                                                    Waist <span class="mini-text">(cm)</span>
+                                                                </th>
+                                                                <th>Hip <span class="mini-text">(cm)</span></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>XS</td>
+                                                                <td>82,5</td>
+                                                                <td>62</td>
+                                                                <td>87,5</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>S</td>
+                                                                <td>85</td>
+                                                                <td>63,5</td>
+                                                                <td>89</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>M</td>
+                                                                <td>87,5</td>
+                                                                <td>67,5</td>
+                                                                <td>93</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>L</td>
+                                                                <td>90</td>
+                                                                <td>72,5</td>
+                                                                <td>98</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>XL</td>
+                                                                <td>93</td>
+                                                                <td>77,5</td>
+                                                                <td>103</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </li>
+                                            <li class="has-child expand">
+                                                <a href="#" class="icon-small">
+                                                    Reviews<span class="mini-text">2.2k</span>
+                                                </a>
+                                                <div class="content">
+                                                    <div class="reviews">
+                                                        <h4>Customers Reviews</h4>
+                                                        <div class="review-block">
+                                                            <div class="review-block-head">
+                                                                <div class="flexitem">
+                                                                    <span class="rate-sum">4.9</span>
+                                                                    <span>2,251 Reviews</span>
+                                                                </div>
+                                                                <a href="#review-form"
+                                                                   class="secondary-button">Write review</a>
+                                                            </div>
+                                                            <div class="review-block-body">
+                                                                <ul>
+                                                                    <li class="item">
+                                                                        <div class="review-form">
+                                                                            <p class="person">
+                                                                                Review by Sarah
+                                                                            </p>
+                                                                            <p class="mini-text">
+                                                                                On 07/01/2023
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="review-rating rating">
+                                                                            <div class="stars"></div>
+                                                                        </div>
+                                                                        <div class="review-title">
+                                                                            <p>Awesome product!</p>
+                                                                        </div>
+                                                                        <div class="review-text">
+                                                                            <p>
+                                                                                Lorem ipsum dolor sit amet,
+                                                                                consectetur adipisicing elit.
+                                                                                Praesentium nisi eligendi sequi
+                                                                                mollitia, quos error
+                                                                                exercitationem animi harum
+                                                                                tenetur expedita!
+                                                                            </p>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="item">
+                                                                        <div class="review-form">
+                                                                            <p class="person">
+                                                                                Review by Sarah
+                                                                            </p>
+                                                                            <p class="mini-text">
+                                                                                On 07/01/2023
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="review-rating rating">
+                                                                            <div class="stars"></div>
+                                                                        </div>
+                                                                        <div class="review-title">
+                                                                            <p>Awesome product!</p>
+                                                                        </div>
+                                                                        <div class="review-text">
+                                                                            <p>
+                                                                                Lorem ipsum dolor sit amet,
+                                                                                consectetur adipisicing elit.
+                                                                                Praesentium nisi eligendi sequi
+                                                                                mollitia, quos error
+                                                                                exercitationem animi harum
+                                                                                tenetur expedita!
+                                                                            </p>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <div class="second-links">
+                                                                    <a href="#"
+                                                                       class="view-all">
+                                                                        View all reviews <i class="ri-arrow-right-line"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div id="review-form" class="review-form">
+                                                                <h4>Write a review</h4>
+                                                                <div class="rating">
+                                                                    <p>Are you satisfied enough?</p>
+                                                                    <div class="rate-this">
+                                                                        <input type="radio" name="rating"
+                                                                               id="star5">
+                                                                        <label for="star5">
+                                                                            <i class="ri-star-fill"></i>
+                                                                        </label>
+
+                                                                        <input type="radio" name="rating"
+                                                                               id="star4">
+                                                                        <label for="star4">
+                                                                            <i class="ri-star-fill"></i>
+                                                                        </label>
+
+                                                                        <input type="radio" name="rating"
+                                                                               id="star3">
+                                                                        <label for="star3">
+                                                                            <i class="ri-star-fill"></i>
+                                                                        </label>
+
+                                                                        <input type="radio" name="rating"
+                                                                               id="star2">
+                                                                        <label for="star2">
+                                                                            <i class="ri-star-fill"></i>
+                                                                        </label>
+
+                                                                        <input type="radio" name="rating"
+                                                                               id="star1">
+                                                                        <label for="star1">
+                                                                            <i class="ri-star-fill"></i>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <form action="">
+                                                                    <p>
+                                                                        <label>Name</label>
+                                                                        <input type="text">
+                                                                    </p>
+                                                                    <p>
+                                                                        <label>Sumary</label>
+                                                                        <input type="text">
+                                                                    </p>
+                                                                    <p>
+                                                                        <label>Review</label>
+                                                                        <textarea cols="30"
+                                                                                  rows="10"></textarea>
+                                                                    </p>
+                                                                    <p>
+                                                                        <a href="#" class="primary-button">
+                                                                            Submit
+                                                                            Review
+                                                                        </a>
+                                                                    </p>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="container">
+            <div class="wrapper">
+                <div class="column">
+                    <div class="sectop flexitem">
+                        <h2><span class="circle"></span><span>Related Products</span></h2>
+                        <div class="second-links">
+                            <a href="#" class="view-all">View all<i class="ri-arrow-right-line"></i></a>
+                        </div>
+                    </div>
+                    <div class="products main flexwrap">
+                        @foreach (Product product in ViewBag.Products)
+                        {
+                            product.Images.Reverse();
+                            @if (!product.IsDeleted)
+                            {
+                                @if(product.Id == Model.Id)
+                                {
+                                    <div class="item">
+                                        <div class="media">
+                                            <div class="thumbnail object-cover">
+                                                <a href="/ProductSingle/@product.Id">
+                                                    <img src="@product.Images[product.Images.Count - 1].FilePath" />
+                                                </a>
+                                            </div>
+                                            <div class="hoverable">
+                                                <ul>
+                                                    <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                                    <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                                    <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="discount circle flexcenter"><span>25%</span></div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="rating">
+                                                <div class="stars"></div>
+                                                <span class="mini-text">(1,955)</span>
+                                            </div>
+                                            <h3 class="main-links">
+                                                <a href="/ProductSingle/@product.Id">
+                                                    @product.Name
+                                                </a>
+                                            </h3>
+                                            <div class="price">
+                                                <span class="current">$@product.Price</span>
+                                                <span class="normal mini-text">$75.50</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else{
+                                    <div class="item">
+                                        <div class="media">
+                                            <div class="thumbnail object-cover">
+                                                <a href="/ProductSingle/@product.Id">
+                                                    <img src="@product.Images[0].FilePath" />
+                                                </a>
+                                            </div>
+                                            <div class="hoverable">
+                                                <ul>
+                                                    <li class="active"><a href="#"><i class="ri-heart-line"></i></a></li>
+                                                    <li><a href="#"><i class="ri-eye-line"></i></a></li>
+                                                    <li><a href="#"><i class="ri-shuffle-line"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="discount circle flexcenter"><span>25%</span></div>
+                                        </div>
+                                        <div class="content">
+                                            <div class="rating">
+                                                <div class="stars"></div>
+                                                <span class="mini-text">(1,955)</span>
+                                            </div>
+                                            <h3 class="main-links">
+                                                <a href="/ProductSingle/@product.Id">
+                                                    @product.Name
+                                                </a>
+                                            </h3>
+                                            <div class="price">
+                                                <span class="current">$@product.Price</span>
+                                                <span class="normal mini-text">$75.50</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="banners">
+        <div class="container">
+            <div class="wrapper">
+                <div class="column">
+                    <div class="banner flexwrap">
+                        <div class="row">
+                            <div class="item">
+                                <div class="image">
+                                    <img src="/images/assets/banner/banner1.jpg" alt="">
+                                </div>
+                                <div class="text-content flexcol">
+                                    <h4>Brutal Sale!</h4>
+                                    <h3><span>Get the deal in here</span><br>Living Room Chair</h3>
+                                    <a href="#" class="primary-button">Shop Now</a>
+                                </div>
+                                <a href="#" class="over-link"></a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="item get-gray">
+                                <div class="image">
+                                    <img src="/images/assets/banner/banner2.jpg" alt="">
+                                </div>
+                                <div class="text-content flexcol">
+                                    <h4>Brutal Sale!</h4>
+                                    <h3><span>Discount everyday</span><br>Office Outfit</h3>
+                                    <a href="#" class="primary-button">Shop Now</a>
+                                </div>
+                                <a href="#" class="over-link"></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-categories flexwrap">
+                        <div class="row">
+                            <div class="item">
+                                <div class="image">
+                                    <img src="/images/assets/banner/procat1.jpg" alt="">
+                                </div>
+                                <div class="content mini-links">
+                                    <h4>Beauty</h4>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Makeup</a></li>
+                                        <li><a href="#">Skin Care</a></li>
+                                        <li><a href="#">Hair Care</a></li>
+                                        <li><a href="#">Fragrance</a></li>
+                                        <li><a href="#">Foot & Hand Care</a></li>
+                                    </ul>
+                                    <div class="second-links">
+                                        <a href="#" class="view-all">
+                                            View all
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="item">
+                                <div class="image">
+                                    <img src="/images/assets/banner/procat2.jpg" alt="">
+                                </div>
+                                <div class="content mini-links">
+                                    <h4>Gatdets</h4>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Camera</a></li>
+                                        <li><a href="#">Cell Phones</a></li>
+                                        <li><a href="#">Computers</a></li>
+                                        <li><a href="#">GPS & Navigation</a></li>
+                                        <li><a href="#">Headphones</a></li>
+                                    </ul>
+                                    <div class="second-links">
+                                        <a href="#" class="view-all">
+                                            View all
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="item">
+                                <div class="image">
+                                    <img src="/images/assets/banner/procat3.jpg" alt="">
+                                </div>
+                                <div class="content mini-links">
+                                    <h4>Home Decor</h4>
+                                    <ul class="flexcol">
+                                        <li><a href="#">Kitchen</a></li>
+                                        <li><a href="#">Dining Room</a></li>
+                                        <li><a href="#">Pantry</a></li>
+                                        <li><a href="#">Great Room</a></li>
+                                        <li><a href="#">Breakfast Nook</a></li>
+                                    </ul>
+                                    <div class="second-links">
+                                        <a href="#" class="view-all">
+                                            View all
+                                            <i class="ri-arrow-right-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

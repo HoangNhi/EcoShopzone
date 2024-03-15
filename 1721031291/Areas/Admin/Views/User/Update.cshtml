@@ -1,0 +1,39 @@
+﻿@using _1721031291_DaoHoangNhi.Models.Respone;
+@model UserRespone;
+
+<div class="container">
+    <form method="post" class="d-flex flex-column w-75 mx-auto">
+        <input type="hidden" asp-for="User.Id" value=@Model.User.Id>
+        <h3>Update - User</h3>
+        <div class="d-flex mt-2" style="width:100%">
+            <div class="mx-4 w-100">
+                <div class="form-group">
+                    <label>Name: </label>
+                    <input asp-for="@Model.User.Name" type="text" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Email: </label>
+                    <input asp-for="@Model.User.Email" type="email" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Phone number: </label>
+                    <input asp-for="@Model.User.PhoneNumber" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Role: </label>
+                    <select asp-for="RoleId" asp-items="@ViewBag.Roles" class="form-control">
+                        <option disabled>Chọn thể loại</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-2">Cập nhật</button>
+        <a asp-action="Index" class="btn btn-primary mt-2">Hủy</a>
+    </form>
+</div>
+
+<script>
+    console.log(@Html.Raw(ViewBag.UserRespone));
+</script>

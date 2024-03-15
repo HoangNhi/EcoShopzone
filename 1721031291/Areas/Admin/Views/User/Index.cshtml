@@ -1,0 +1,59 @@
+﻿@using _1721031291_DaoHoangNhi.Models.Respone
+@model List<UserRespone>;
+@{
+
+}
+<div class="card text-center">
+    <div class="card-header">
+        <p>User</p>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phonenumber</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Setting</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(UserRespone user in Model)
+                {
+                    <tr>
+                        <td class="border">
+                            <p>@user.User.Name</p>
+                        </td>
+                        <td class="border">@user.User.Email</td>
+                        <td class="border">@user.User.PhoneNumber</td>
+                        <td class="border">
+                            @foreach(var role in user.Role)
+                            {
+                                <p>@role.ToString()</p>
+                            }
+                        </td>
+                        <td class="border" style="width:200px">
+                            <a asp-action="Update" asp-route-id="@user.User.Id">Edit</a>|
+                            <a class="text-danger" onclick="xoa(@user.User.Id, $(this))">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    var user = @Html.Raw(ViewBag.UserCheck); // Sử dụng Html.Raw để tránh escape JSON.
+    console.log(user);
+    function xoa(id, row) {
+        $.ajax({
+            url: `/Admin/User/Delete?id=${id}`,
+            type: "POST",
+            success: function (data) {
+                row.closest("tr").remove();
+            }
+        })
+    }
+</script>

@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using _1721031291_DaoHoangNhi.Models;
+@model NhaCungCap;
+
+<div class="card text-center">
+    <div class="card-header">
+        Nhà cung cấp
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Tên nhà cung cấp</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.NhaCungCap)
+                {
+                    <tr>
+                        <td width="10%">@item.Id</td>
+                        <td width="30%">@item.Ten</td>
+                        <td width="25%">@item.DiaChi</td>
+                        <td width="25%">@item.SDT</td>
+                        <td width="10%">
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-controller="NhaCungCap" asp-action="Create" class="btn btn-primary">Thêm</a>
+    </div>
+</div>

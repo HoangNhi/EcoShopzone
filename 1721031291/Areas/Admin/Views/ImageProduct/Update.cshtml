@@ -1,0 +1,13 @@
+﻿@using _1721031291_DaoHoangNhi.Models;
+@model ImageProduct;
+
+<div class="container">
+    <h2>Thêm hình ảnh mới - Image Product</h2>
+    <form method="post" asp-action="Update" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Chọn hình ảnh</label>
+            <input type="file" name="files" id="file" multiple required class="form-control-file" />
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>

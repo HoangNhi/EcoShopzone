@@ -1,0 +1,18 @@
+﻿@using _1721031291_DaoHoangNhi.Models;
+@model NhaCungCap
+
+<div class="container">
+    <h3>Create - Nhà cung cấp</h3>
+    <form method="post">
+        <labet>Tên nhà cung cấp: </labet>
+        <input asp-for="Ten" type="text" class="form-control" />
+
+        <labet>Địa chỉ: </labet>
+        <input asp-for="DiaChi" type="text" class="form-control" />
+
+        <labet>Số điện thoại: </labet>
+        <input asp-for="SDT" type="text" class="form-control" />
+
+        <button type="submit" class="btn btn-primary mt-2">Đăng ký</button>
+    </form>
+</div>

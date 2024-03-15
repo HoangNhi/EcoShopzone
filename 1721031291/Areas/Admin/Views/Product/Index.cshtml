@@ -1,0 +1,61 @@
+﻿@using _1721031291_DaoHoangNhi.Models;
+@model Product;
+
+<div class="card text-center">
+    <div class="card-header">
+        <p>Sản phẩm</p>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Hình ảnh</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in ViewBag.products)
+                {
+                    product.Images.Reverse();
+                    <tr>
+                        <td class="border" style="width:200px; text-align:justify">
+                            <p>@product.Name</p>
+                        </td>
+                        <td class="w-25 border" style="text-align:justify">@product.Description</td>
+                        <td class="border">@product.Price $</td>
+                        <td class="border">
+                            <div class="text-start">
+                                @foreach (ImageProduct img in product.Images)
+                                {
+                                    <img src="@img.FilePath" style="width:100px" />
+                                }
+                            </div>
+                        </td>
+                        <td class="border">@product.TheLoaiViewModel.Name</td>
+                        <td class="border" style="width:100px">
+                            <a asp-action="Upsert" asp-route-id="@product.Id">Edit</a>|
+                            <a class="text-danger" onclick="xoa(@product.Id, $(this))">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+    </div>
+</div>
+
+<script>
+    function xoa(id, row) {
+        $.ajax({
+            url: `/Admin/Product/Delete?id=${id}`,
+            type: "POST",
+            success: function (data) {
+                row.closest("tr").remove();
+            }
+        })
+    }
+</script>

@@ -1,0 +1,36 @@
+﻿@using _1721031291_DaoHoangNhi.Models;
+@model IEnumerable<TheLoaiViewModel>;
+
+@* <li class="has-child relative">
+    <a href="#">
+        Brands
+        <div class="icon-small">
+            <i class="ri-arrow-down-s-line"></i>
+        </div>
+        <div class="mega w-fit">
+            @foreach (TheLoaiViewModel brand in Model)
+            {
+                <a href="#">@brand.Name</a>
+            }
+        </div>
+    </a>
+</li> *@
+<div class="group inline-block relative">
+    <div class="text-black inline-flex items-center px-3">
+        <span class="mr-1">Brand</span>
+        <svg class="fill-current h-4 w-4"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 20 20">
+            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+        </svg>
+    </div>
+    <ul class="absolute hidden text-black group-hover:block z-10 w-[200px]">
+        @foreach(TheLoaiViewModel brand in Model)
+        {
+            <li class="">
+                <a class="bg-[#f2f3f5] hover:font-bold py-1 px-4 block leading-loose"
+                   href="/Brands/@brand.Id">@brand.Name</a>
+            </li>
+        }
+    </ul>
+</div>
